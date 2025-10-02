@@ -1,18 +1,18 @@
-<!DOCTYPE html>  
-<html lang="en">  
-<head>  
-    <meta charset="UTF-8">  
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
-    <title>Doomclock</title>  
-</head>  
-<body>  
-    <h1>Doomclock</h1>  
-    <h2>About website</h2>  
-    <p>Find the countdown to the end of anything.</p>  
-    
-    <div id="countdown"></div>  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Doomclock</title>
+</head>
+<body>
+  <h1>Doomclock</h1>
+  <h2>About website</h2>
+  <p>Find the countdown to the end of anything.</p>
 
-    <script>  
+  <div id="countdown"></div>
+
+  <script>
     // Set the target date/time
     let targetDate = new Date("January 1, 2026 00:00:00").getTime();
 
@@ -26,20 +26,20 @@
       let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
       let seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-      // Format each number to 4 digits
+      // Always 4 digits
       days = String(days).padStart(4, "0");
       hours = String(hours).padStart(4, "0");
       minutes = String(minutes).padStart(4, "0");
       seconds = String(seconds).padStart(4, "0");
 
       document.getElementById("countdown").innerText =
-        days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+        days + ":" + hours + ":" + minutes + ":" + seconds;
 
       if (distance < 0) {
         clearInterval(timer);
         document.getElementById("countdown").innerText = "💀 Time's up!";
       }
     }, 1000);
-    </script>  
-</body>  
+  </script>
+</body>
 </html>
