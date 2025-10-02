@@ -1,15 +1,14 @@
 @font-face {
-	font-family: 'DSDIGI';
-	src: local('DSDIGI'), url('./DSDIGI.woff') format('woff');
+  font-family: 'DSDIGI';
+  src: local('DSDIGI'), url('./DSDIGI.woff') format('woff');
 }
-/* use this class to attach this font to any element i.e. <p class="fontsforweb_fontid_1091">Text with this font applied</p> */
+
+/* Optional: apply DS font with a helper class */
 .fontsforweb_fontid_1091 {
-	font-family: 'DSDIGI' !important;
+  font-family: 'DSDIGI' !important;
 }
 
-/* Font downloaded from FontsForWeb.com */
-
-/* Style the whole page */
+/* General page styling */
 body {
   background-color: black;
   color: red;
@@ -36,5 +35,5 @@ h2 {
   font-size: 4em;
   margin-top: 20px;
   letter-spacing: 3px;
-  font-family: 'MyCustomFont', serif
+  font-family: 'DSDIGI', monospace; /* FIXED */
 }
