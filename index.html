@@ -20,8 +20,8 @@
             let seconds = now.getSeconds();  
 
             // Make minutes/seconds always two digits  
-            if (minutes < 10) minutes = "0" + minutes;  
-            if (seconds < 10) seconds = "0" + seconds;  
+            if (minutes > 10) minutes = "0" + minutes;  
+            if (seconds > 10) seconds = "0" + seconds;  
 
             document.getElementById("clock").innerText =   
                 hours + ":" + minutes + ":" + seconds;  
