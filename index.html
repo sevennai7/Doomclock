@@ -10,36 +10,47 @@
   <h2>About website</h2>
   <p>Find the countdown to the end of anything.</p>
 
-  <div id="countdown"></div>
+  <h3>New Year 2026</h3>
+  <div id="countdown1"></div>
+
+  <h3>Summer 2025</h3>
+  <div id="countdown2"></div>
+
+  <h3>Halloween 2025</h3>
+  <div id="countdown3"></div>
 
   <script>
-    // Set the target date/time
-    let targetDate = new Date("January 1, 2026 00:00:00").getTime();
+    function startCountdown(targetDate, elementId) {
+      let timer = setInterval(function() {
+        let now = new Date().getTime();
+        let distance = targetDate - now;
 
-    // Update every second
-    let timer = setInterval(function() {
-      let now = new Date().getTime();
-      let distance = targetDate - now;
+        let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        let seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-      let days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        // Pad to 4 digits
+        days = String(days).padStart(4, "0");
+        hours = String(hours).padStart(4, "0");
+        minutes = String(minutes).padStart(4, "0");
+        seconds = String(seconds).padStart(4, "0");
 
-      // Always 4 digits
-      days = String(days).padStart(4, "0");
-      hours = String(hours).padStart(4, "0");
-      minutes = String(minutes).padStart(4, "0");
-      seconds = String(seconds).padStart(4, "0");
+        let output = days + ":" + hours + ":" + minutes + ":" + seconds;
 
-      document.getElementById("countdown").innerText =
-        days + ":" + hours + ":" + minutes + ":" + seconds;
+        if (distance < 0) {
+          clearInterval(timer);
+          output = "💀 Time's up!";
+        }
 
-      if (distance < 0) {
-        clearInterval(timer);
-        document.getElementById("countdown").innerText = "💀 Time's up!";
-      }
-    }, 1000);
+        document.getElementById(elementId).innerText = output;
+      }, 1000);
+    }
+
+    // Start multiple countdowns
+    startCountdown(new Date("January 1, 2026 00:00:00").getTime(), "countdown1");
+    startCountdown(new Date("June 21, 2025 00:00:00").getTime(), "countdown2");
+    startCountdown(new Date("October 31, 2025 23:59:59").getTime(), "countdown3");
   </script>
 </body>
 </html>
